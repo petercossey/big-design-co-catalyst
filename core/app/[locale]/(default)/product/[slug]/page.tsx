@@ -7,6 +7,7 @@ import { SearchParams } from 'nuqs/server';
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { FeaturedProductCarousel } from '@/vibes/soul/sections/featured-product-carousel';
 import { getSessionCustomerAccessToken } from '~/auth';
+import { StockWidget } from '~/components/product-detail/stock-widget';
 import { pricesTransformer } from '~/data-transformers/prices-transformer';
 import { productCardTransformer } from '~/data-transformers/product-card-transformer';
 import { productOptionsTransformer } from '~/data-transformers/product-options-transformer';
@@ -318,6 +319,11 @@ export default async function Product({ params, searchParams }: Props) {
           quantityLabel={t('ProductDetails.quantity')}
           thumbnailLabel={t('ProductDetails.thumbnail')}
         />
+
+        {/* Stock Widget */}
+        <div className="mt-6">
+          <StockWidget product={baseProduct} />
+        </div>
       </ProductAnalyticsProvider>
 
       <FeaturedProductCarousel
